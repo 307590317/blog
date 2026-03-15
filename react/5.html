@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>React之渲染优化 | MrZhao&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/logo.jpg">
+    <meta name="description" content="个人博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.7f07d26c.css" as="style"><link rel="preload" href="/assets/js/app.68a92ff7.js" as="script"><link rel="preload" href="/assets/js/3.69238fd6.js" as="script"><link rel="preload" href="/assets/js/2.c7128555.js" as="script"><link rel="preload" href="/assets/js/1.d6071190.js" as="script"><link rel="preload" href="/assets/js/94.74460168.js" as="script"><link rel="prefetch" href="/assets/js/100.97fa3da6.js"><link rel="prefetch" href="/assets/js/101.049ad89f.js"><link rel="prefetch" href="/assets/js/102.81d83126.js"><link rel="prefetch" href="/assets/js/103.e1f30e11.js"><link rel="prefetch" href="/assets/js/104.96b1db6a.js"><link rel="prefetch" href="/assets/js/105.efa62447.js"><link rel="prefetch" href="/assets/js/106.8040e3a9.js"><link rel="prefetch" href="/assets/js/107.79db0bd6.js"><link rel="prefetch" href="/assets/js/108.5641d3c5.js"><link rel="prefetch" href="/assets/js/109.21ac1e14.js"><link rel="prefetch" href="/assets/js/11.af4014cb.js"><link rel="prefetch" href="/assets/js/110.6df0aa05.js"><link rel="prefetch" href="/assets/js/111.7a7accdf.js"><link rel="prefetch" href="/assets/js/112.bd0246f1.js"><link rel="prefetch" href="/assets/js/113.13ef5556.js"><link rel="prefetch" href="/assets/js/114.26112cb4.js"><link rel="prefetch" href="/assets/js/115.9464e51d.js"><link rel="prefetch" href="/assets/js/116.09b1d08a.js"><link rel="prefetch" href="/assets/js/117.2c9681cc.js"><link rel="prefetch" href="/assets/js/118.053748a2.js"><link rel="prefetch" href="/assets/js/119.7c2af0fd.js"><link rel="prefetch" href="/assets/js/12.a5cf139d.js"><link rel="prefetch" href="/assets/js/120.8da09861.js"><link rel="prefetch" href="/assets/js/121.53b422cb.js"><link rel="prefetch" href="/assets/js/122.376e24be.js"><link rel="prefetch" href="/assets/js/123.ad4fde9c.js"><link rel="prefetch" href="/assets/js/124.60d5636a.js"><link rel="prefetch" href="/assets/js/125.6a1ad4d8.js"><link rel="prefetch" href="/assets/js/126.68429312.js"><link rel="prefetch" href="/assets/js/127.06cad940.js"><link rel="prefetch" href="/assets/js/128.80e88fd7.js"><link rel="prefetch" href="/assets/js/129.35e978c0.js"><link rel="prefetch" href="/assets/js/13.7ff7858c.js"><link rel="prefetch" href="/assets/js/130.71aa5bca.js"><link rel="prefetch" href="/assets/js/131.6cd77cd7.js"><link rel="prefetch" href="/assets/js/132.9c7b6772.js"><link rel="prefetch" href="/assets/js/133.57e43afc.js"><link rel="prefetch" href="/assets/js/134.e5d127bb.js"><link rel="prefetch" href="/assets/js/135.892f9791.js"><link rel="prefetch" href="/assets/js/14.b0b0ce5d.js"><link rel="prefetch" href="/assets/js/15.6a364248.js"><link rel="prefetch" href="/assets/js/16.6b3933cb.js"><link rel="prefetch" href="/assets/js/17.2dfc0219.js"><link rel="prefetch" href="/assets/js/18.9b0f70ca.js"><link rel="prefetch" href="/assets/js/19.04170ad8.js"><link rel="prefetch" href="/assets/js/20.c113fd2b.js"><link rel="prefetch" href="/assets/js/21.6c9baeb9.js"><link rel="prefetch" href="/assets/js/22.3f0d10d5.js"><link rel="prefetch" href="/assets/js/23.d77af887.js"><link rel="prefetch" href="/assets/js/24.fb249acc.js"><link rel="prefetch" href="/assets/js/25.4defa308.js"><link rel="prefetch" href="/assets/js/26.e01010e1.js"><link rel="prefetch" href="/assets/js/27.0e0ed007.js"><link rel="prefetch" href="/assets/js/28.d5c43fda.js"><link rel="prefetch" href="/assets/js/29.84c0cc28.js"><link rel="prefetch" href="/assets/js/30.d23093ca.js"><link rel="prefetch" href="/assets/js/31.a4b42b33.js"><link rel="prefetch" href="/assets/js/32.284c18b7.js"><link rel="prefetch" href="/assets/js/33.09720d56.js"><link rel="prefetch" href="/assets/js/34.3825b2ed.js"><link rel="prefetch" href="/assets/js/35.c0c388e2.js"><link rel="prefetch" href="/assets/js/36.0989a443.js"><link rel="prefetch" href="/assets/js/37.57609e84.js"><link rel="prefetch" href="/assets/js/38.ebb2f185.js"><link rel="prefetch" href="/assets/js/39.6a1d2a62.js"><link rel="prefetch" href="/assets/js/4.22afcbe7.js"><link rel="prefetch" href="/assets/js/40.f17156d7.js"><link rel="prefetch" href="/assets/js/41.c04e4e7d.js"><link rel="prefetch" href="/assets/js/42.860f1416.js"><link rel="prefetch" href="/assets/js/43.6986fc07.js"><link rel="prefetch" href="/assets/js/44.e1301e8c.js"><link rel="prefetch" href="/assets/js/45.3c374823.js"><link rel="prefetch" href="/assets/js/46.2fd1ad6b.js"><link rel="prefetch" href="/assets/js/47.d35a7795.js"><link rel="prefetch" href="/assets/js/48.af6f75d4.js"><link rel="prefetch" href="/assets/js/49.0306a49d.js"><link rel="prefetch" href="/assets/js/5.9651ef5a.js"><link rel="prefetch" href="/assets/js/50.d0ff129c.js"><link rel="prefetch" href="/assets/js/51.caac4495.js"><link rel="prefetch" href="/assets/js/52.dacca2d0.js"><link rel="prefetch" href="/assets/js/53.442c7cc9.js"><link rel="prefetch" href="/assets/js/54.848e4faa.js"><link rel="prefetch" href="/assets/js/55.e44d518e.js"><link rel="prefetch" href="/assets/js/56.f14e3a1a.js"><link rel="prefetch" href="/assets/js/57.86846a22.js"><link rel="prefetch" href="/assets/js/58.7a365fa1.js"><link rel="prefetch" href="/assets/js/59.da65a2e1.js"><link rel="prefetch" href="/assets/js/6.bb603ec8.js"><link rel="prefetch" href="/assets/js/60.2799abca.js"><link rel="prefetch" href="/assets/js/61.81c00461.js"><link rel="prefetch" href="/assets/js/62.f5038bc9.js"><link rel="prefetch" href="/assets/js/63.59f8d1a9.js"><link rel="prefetch" href="/assets/js/64.e2a8c3ef.js"><link rel="prefetch" href="/assets/js/65.e891541f.js"><link rel="prefetch" href="/assets/js/66.df36c380.js"><link rel="prefetch" href="/assets/js/67.2eab18aa.js"><link rel="prefetch" href="/assets/js/68.2d40d5cc.js"><link rel="prefetch" href="/assets/js/69.52711432.js"><link rel="prefetch" href="/assets/js/7.b18ad657.js"><link rel="prefetch" href="/assets/js/70.90267832.js"><link rel="prefetch" href="/assets/js/71.ccfa4273.js"><link rel="prefetch" href="/assets/js/72.cdab6551.js"><link rel="prefetch" href="/assets/js/73.7f0b203d.js"><link rel="prefetch" href="/assets/js/74.bbba0033.js"><link rel="prefetch" href="/assets/js/75.e7a48bb2.js"><link rel="prefetch" href="/assets/js/76.f09e46d0.js"><link rel="prefetch" href="/assets/js/77.0eb62c5e.js"><link rel="prefetch" href="/assets/js/78.57ba4cea.js"><link rel="prefetch" href="/assets/js/79.e2d419a8.js"><link rel="prefetch" href="/assets/js/8.de50125a.js"><link rel="prefetch" href="/assets/js/80.da9247c6.js"><link rel="prefetch" href="/assets/js/81.73d8ccc9.js"><link rel="prefetch" href="/assets/js/82.59fdc36a.js"><link rel="prefetch" href="/assets/js/83.fae3fc33.js"><link rel="prefetch" href="/assets/js/84.17509fed.js"><link rel="prefetch" href="/assets/js/85.6ad13c6f.js"><link rel="prefetch" href="/assets/js/86.2eb63174.js"><link rel="prefetch" href="/assets/js/87.e1cdcdb7.js"><link rel="prefetch" href="/assets/js/88.10504dd3.js"><link rel="prefetch" href="/assets/js/89.22106f67.js"><link rel="prefetch" href="/assets/js/90.c559227c.js"><link rel="prefetch" href="/assets/js/91.d577edfa.js"><link rel="prefetch" href="/assets/js/92.0356da79.js"><link rel="prefetch" href="/assets/js/93.95ae0d94.js"><link rel="prefetch" href="/assets/js/95.03a60bb0.js"><link rel="prefetch" href="/assets/js/96.9d33cd1e.js"><link rel="prefetch" href="/assets/js/97.32d5e1b4.js"><link rel="prefetch" href="/assets/js/98.832514f2.js"><link rel="prefetch" href="/assets/js/99.66da89ed.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.a32f4da1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7f07d26c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MrZhao's blog</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><span class="title">前端基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端基础" class="mobile-dropdown-title"><span class="title">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/feBase/js/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/ES6/base.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/feBase/css/1.html" class="nav-link">
+  Css
+</a></li><li class="dropdown-item"><!----> <a href="/feBase/browser/1.html" class="nav-link">
+  浏览器
+</a></li><li class="dropdown-item"><!----> <a href="/feBase/mini/1.html" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/react/1.html" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/ssr/" class="nav-link">
+  SSR
+</a></li><li class="dropdown-item"><!----> <a href="/cloudflare/tunnel.html" class="nav-link">
+  Cloudflare
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/webpack/base.html" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/rollup/base.html" class="nav-link">
+  Rollup
+</a></li></ul></div></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/leetcode/array.html" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/test/" class="nav-link">
+  常见问题
+</a></div><div class="nav-item"><a href="/web3/" class="nav-link">
+  web3
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><span class="title">前端基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端基础" class="mobile-dropdown-title"><span class="title">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/feBase/js/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/ES6/base.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/feBase/css/1.html" class="nav-link">
+  Css
+</a></li><li class="dropdown-item"><!----> <a href="/feBase/browser/1.html" class="nav-link">
+  浏览器
+</a></li><li class="dropdown-item"><!----> <a href="/feBase/mini/1.html" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/react/1.html" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/ssr/" class="nav-link">
+  SSR
+</a></li><li class="dropdown-item"><!----> <a href="/cloudflare/tunnel.html" class="nav-link">
+  Cloudflare
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/webpack/base.html" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/rollup/base.html" class="nav-link">
+  Rollup
+</a></li></ul></div></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/leetcode/array.html" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/test/" class="nav-link">
+  常见问题
+</a></div><div class="nav-item"><a href="/web3/" class="nav-link">
+  web3
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>React</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react/1.html" class="sidebar-link">React基础</a></li><li><a href="/react/2.html" class="sidebar-link">React路由</a></li><li><a href="/react/3.html" class="sidebar-link">React之redux(数据管理)</a></li><li><a href="/react/4.html" class="sidebar-link">React之domdiff策略</a></li><li><a href="/react/5.html" aria-current="page" class="active sidebar-link">React之渲染优化</a></li><li><a href="/react/6.html" class="sidebar-link">React Hooks</a></li><li><a href="/react/7.html" class="sidebar-link">React test</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#usememo、usecallback用途">useMemo、useCallback用途</a></li><li><a href="#常见误区">常见误区</a></li><li><a href="#正确的使用场景">正确的使用场景</a></li></ul></div><p></p> <h1 id="react之渲染优化"><a href="#react之渲染优化" class="header-anchor">#</a> React之渲染优化</h1> <p>React 的 useMemo 和 useCallback 这两个 Hook 主要用于记忆化（memoization），即在组件重新渲染时缓存某个值或函数，避免重复创建。但是在大多数情况下我们其实不需要它们，甚至过度使用会让应用变慢、代码更复杂。</p> <h2 id="usememo、usecallback用途"><a href="#usememo、usecallback用途" class="header-anchor">#</a> useMemo、useCallback用途</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>useMemo</code>：缓存计算结果或对象，防止在每次渲染时被重新创建。
+<code>useCallback</code>：缓存函数引用，防止在依赖不变的情况下生成新函数。</p> <p>以上两个方法只在<strong>重新渲染</strong>阶段有用，在<strong>初次渲染时</strong>反而会拖慢性能</p></div> <h2 id="常见误区"><a href="#常见误区" class="header-anchor">#</a> 常见误区</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <ul><li>1、为所有<code>props</code>加上<code>useMemo/useCallback</code> <ul><li>没有必要，除非该子组件被<code>React.memo</code>包裹，否则不会阻止重渲染。</li></ul></li> <li>2、认为<code>props</code>记忆化就能防止重复渲染；
+<ul><li>实际上，只要父组件重新渲染，子组件仍会跟着渲染，除非用<code>React.memo</code></li></ul></li> <li>3、误认为所有计算都昂贵；
+<ul><li>普通操作（数组排序、对象创建）通常只需要几毫秒，不值得记忆化。除非你真的在计算大数的阶乘，否则不要对所有纯 <code>JavaScript</code> 操作使用 <code>useMemo</code></li></ul></li></ul></div> <h2 id="正确的使用场景"><a href="#正确的使用场景" class="header-anchor">#</a> 正确的使用场景</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>仅在以下情况下使用</p> <ul><li>子组件被<code>React.memo</code>包裹，且传入的<code>props</code>都稳定不变;</li> <li>某段计算确实非常昂贵（如大数据处理，复杂数学计算）;</li> <li>需要维持函数、对象引用稳定性，避免触发无意义的依赖更新;</li></ul> <p>对“原生” JavaScript 操作（即纯计算、对象/数组创建、过滤/排序等）不要包裹 <code>useMemo</code> —— 与其浪费时间在它上面，不如专注于子组件更新；它们才是你的真正瓶颈。</p></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3/15/2026, 9:35:10 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/react/4.html" class="prev">
+        React之domdiff策略
+      </a></span> <span class="next"><a href="/react/6.html">
+        React Hooks
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.68a92ff7.js" defer></script><script src="/assets/js/3.69238fd6.js" defer></script><script src="/assets/js/2.c7128555.js" defer></script><script src="/assets/js/1.d6071190.js" defer></script><script src="/assets/js/94.74460168.js" defer></script>
+  </body>
+</html>
